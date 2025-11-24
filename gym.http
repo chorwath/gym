@@ -1,0 +1,33 @@
+@gym_HostAddress = http://localhost:5207
+
+
+### List users
+GET {{gym_HostAddress}}/api/users
+Accept: application/json
+
+### get a user by an ID
+GET {{gym_HostAddress}}/api/users/1
+Accept: application/json
+
+### Post a user
+POST {{gym_HostAddress}}/api/users
+Content-Type: application/json
+{
+  "userName": "Bob",
+  "email": "bob@email.com",
+  "password": "testpassword"
+}
+
+
+### now we are updating with a put
+PUT {{gym_HostAddress}}/api/users/1
+Content-Type: application/json
+{
+  "userID": 1,
+  "userName": "janet",
+  "password": "456",
+  "email": "janet@email.com"
+}
+
+### DELETE 
+DELETE {{gym_HostAddress}}/api/users/1
