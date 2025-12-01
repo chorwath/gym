@@ -12,6 +12,7 @@ Accept: application/json
 ### Post a user
 POST {{gym_HostAddress}}/api/users
 Content-Type: application/json
+
 {
   "userName": "Bob",
   "email": "bob@email.com",
@@ -22,6 +23,7 @@ Content-Type: application/json
 ### now we are updating with a put
 PUT {{gym_HostAddress}}/api/users/1
 Content-Type: application/json
+
 {
   "userID": 1,
   "userName": "janet",
@@ -31,3 +33,13 @@ Content-Type: application/json
 
 ### DELETE 
 DELETE {{gym_HostAddress}}/api/users/1
+
+
+### INSERT EXERCISE
+POST {{gym_HostAddress}}/api/Exercises
+Content-Type: application/json
+
+{
+  "Name": "Bench Press",
+  "Category": "Chest"
+}

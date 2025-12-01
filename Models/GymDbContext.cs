@@ -16,6 +16,7 @@ public partial class GymDbContext : DbContext
     }
 
     public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<Exercise> Exercises { get; set; }
 
     //Dont need for now, this tells EF how to connect if nothing is passed in aka a fallback
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -43,6 +44,24 @@ public partial class GymDbContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("username");
         });
+
+        modelBuilder.Entity<Exercise>(entity =>
+        {
+            entity.ToTable("exercise");
+            entity.HasKey(e => e.ExerciseID);
+
+            entity.Property(e => e.ExerciseID)
+             .HasColumnName("exerciseID");
+
+            entity.Property(x => x.Name)
+            .HasMaxLength(100)
+            .HasColumnName("Name");
+
+            entity.Property(x => x.Category)
+            .HasMaxLength(100)
+            .HasColumnName("Category");
+        });
+        
 
         OnModelCreatingPartial(modelBuilder);
     }
